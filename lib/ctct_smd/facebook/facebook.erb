@@ -1,0 +1,59 @@
+<div class="ctctsmdpage">
+  <h2 class="ctctsmdpagetitle"><%= feed.feed_name %></h2>
+  <% if feed.posts.empty? %>
+    <div class="ctctsmdpost">
+      <h3 class="ctctsmdposttitle">No new posts!</h3>
+    </div>
+  <% end %>
+  <% feed.posts.each do |post| %>
+    <div class="ctctsmdpost">
+      <h3 class="ctctsmdposttitle"><%= post['story'] ||
+          "New Post #{Time.parse(post['created_time']).strftime '%b %e %Y'}" %>:</h3>
+      <div class="ctctsmdposted">
+        Posted: <%= Time.parse(post['created_time']).strftime "%r at %D" %>,
+        Last Updated: <%= Time.parse(post['updated_time']).strftime "%r at %D" %>
+      </div>
+      <% if post['message'] %>
+        <div class="ctctsmdmsg">
+          <p><%= html_format post['message'] %></p>
+        </div>
+      <% end %>
+      <% if post['link'] %>
+        <div class="ctctsmdlink">
+          <% if post['link']['picture'] %>
+            <div class="ctctsmdlinkimg">
+              <SimpleURLProperty name="<%= post.hash %>_img"
+                track="true" type="plain"
+                img="<%= post['link']['picture'] %>"
+                href="<%= post['link']['url'] %>"/>
+            </div>
+          <% end %>
+          <div class="ctctsmdlinktxt">
+            <SimpleURLProperty name="<%= post.hash %>_link"
+                track="true" type="plain"
+                label="<%= post['link']['name'] %>"
+                href="<%= post['link']['url'] %>"/>
+            <% if post['link']['description'] %>
+              <p><%= html_format post['link']['description'] %></p>
+            <% end %>
+          </div>
+          <div class="ctctsmdcaption">
+            <% if post['link']['caption'] %>
+              <p><%= html_format post['link']['caption'] %></p>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+      <div class="ctctsmdreact">
+        <p>Reactions: <%= post['reactions'] %>, Comments: <%= post['comments'] %>,
+        Shares: <%= post['shares'] %></p>
+      </div>
+      <div class="ctctsmdmore">
+        <SimpleURLProperty name="<%= post.hash %>"
+          track="true" type="plain"
+          label="See more here"
+          href="<%= post['permalink_url'] %>"/>
+      </div>
+    </div>
+  <% end %>
+</div>

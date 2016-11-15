@@ -1,0 +1,53 @@
+{
+   "data":[
+      {
+         "id":"362113247194658",
+         "name":"Lowell Downtown Neighborhood Association (LDNA)",
+         "type":"LIKE"
+      },
+      {
+         "id":"10154735575544706",
+         "name":"Tim Durkee",
+         "type":"LIKE"
+      },
+      {
+         "id":"10211032153697278",
+         "name":"Amy Saunders",
+         "type":"LIKE"
+      },
+      {
+         "id":"10211213523122166",
+         "name":"Sue Murphy",
+         "type":"LIKE"
+      },
+      {
+         "id":"1267070313345347",
+         "name":"Alan S. Manoian",
+         "type":"LIKE"
+      },
+      {
+         "id":"10209671483855153",
+         "name":"Tracey Chalifour",
+         "type":"LIKE"
+      },
+      {
+         "id":"10100211134018280",
+         "name":"Paul Alphen",
+         "type":"LIKE"
+      },
+      {
+         "id":"10103435361205405",
+         "name":"Leeann Atkinson",
+         "type":"LIKE"
+      }
+   ],
+   "paging":{
+      "cursors":{
+         "before":"TXpZAeU1URXpNalEzTVRrME5qVTRPakUwTnpneU16SXpOREk2TWpVME1EazJNVFl4TXc9PQZDZD",
+         "after":"TkRJME5UQXlPakUwTnpneU1EVXdOVGM2TWpVME1EazJNVFl4TXc9PQZDZD"
+      }
+   },
+   "summary":{
+      "total_count":8
+   }
+}

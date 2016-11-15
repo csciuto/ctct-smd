@@ -1,0 +1,59 @@
+PATH
+  remote: .
+  specs:
+    ctct_smd (0.1.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    addressable (2.5.0)
+      public_suffix (~> 2.0, >= 2.0.2)
+    byebug (9.0.6)
+    coderay (1.1.1)
+    crack (0.4.3)
+      safe_yaml (~> 1.0.0)
+    diff-lcs (1.2.5)
+    hashdiff (0.3.0)
+    method_source (0.8.2)
+    pry (0.10.4)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+    pry-byebug (3.4.0)
+      byebug (~> 9.0)
+      pry (~> 0.10)
+    public_suffix (2.0.4)
+    rake (10.5.0)
+    rspec-core (3.5.4)
+      rspec-support (~> 3.5.0)
+    rspec-expectations (3.5.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.5.0)
+    rspec-mocks (3.5.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.5.0)
+    rspec-support (3.5.0)
+    safe_yaml (1.0.4)
+    slop (3.6.0)
+    timecop (0.8.1)
+    webmock (2.1.0)
+      addressable (>= 2.3.6)
+      crack (>= 0.3.2)
+      hashdiff
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bundler (~> 1.13)
+  ctct_smd!
+  pry-byebug (~> 3.4)
+  rake (~> 10.0)
+  rspec-core (~> 3.5)
+  rspec-expectations (~> 3.5)
+  rspec-mocks (~> 3.5)
+  timecop (~> 0.8)
+  webmock (~> 2.1)
+
+BUNDLED WITH
+   1.13.6

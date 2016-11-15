@@ -1,0 +1,61 @@
+.ctctsmdbody {
+  background-color: #eedddd;
+}
+.ctctsmdpost {
+  background-color: White;
+  border-style: double;
+  border-width: 2px;
+  margin: 25px;
+  padding: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.ctctsmdheader{
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+.ctctsmdgreeting{
+  font-family: Arial, Helvetica, sans-serif;
+}
+.ctctsmdsubheader{
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  font-style: italic;
+}
+.ctctsmdpagetitle{
+  font-family: Arial, Helvetica, sans-serif;
+}
+.ctctsmdposttitle{
+  font-family: Arial, Helvetica, sans-serif;
+}
+.ctctsmdlink {
+  border-width: 1px;
+  border-style: solid;
+  margin: 10px;
+  padding: 10px;
+  overflow: auto;
+}
+.ctctsmdlinktxt {
+}
+.ctctsmdlinkimg {
+  float: left;
+  padding-right: 10px;
+  padding-bottom: 10px;
+}
+.ctctsmdcaption {
+  font-size: smaller;
+  color: Gray;
+  text-transform: uppercase;
+  text-align: center;
+  clear: left;
+  margin: 10px
+}
+.ctctsmdposted {
+  font-size: smaller;
+  font-style: italic;
+}
+.ctctsmdreact {
+  font-style: italic;
+}
+.ctctsmdmore {
+  text-align: center
+}
