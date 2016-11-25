@@ -1,3 +1,6 @@
+require 'ctct_smd/facebook/facebook_client'
+require 'ctct_smd/facebook/facebook_feed'
+
 module CTCT_SMD
   class FacebookService
 

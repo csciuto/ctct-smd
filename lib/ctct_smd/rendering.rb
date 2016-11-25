@@ -1,3 +1,5 @@
+require 'ctct_smd/ctct_smd_config'
+
 module CTCT_SMD  
   module Rendering    
 

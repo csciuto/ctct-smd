@@ -10,8 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["corey.sciuto@gmail.com"]
 
   spec.summary       = %q{Generates a Constant Contact email from a Facebook Page feed}
-  #spec.description   = %q{TODO: Write a longer description or delete this line.}
-  #spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.homepage      = "https://github.com/csciuto/ctct-smd"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'

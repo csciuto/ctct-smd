@@ -1,4 +1,5 @@
 require 'erb'
+require 'ctct_smd/ctct_smd_config'
 require 'ctct_smd/constantcontact_client'
 
 module CTCT_SMD
