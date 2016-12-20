@@ -1,5 +1,5 @@
 <div class="ctctsmdpage">
-  <h2 class="ctctsmdpagetitle"><%= feed.feed_name %></h2>
+  <h2 class="ctctsmdpagetitle"><%= html_format feed.feed_name %></h2>
   <% if feed.posts.empty? %>
     <div class="ctctsmdpost">
       <h3 class="ctctsmdposttitle">No new posts!</h3>
@@ -7,7 +7,7 @@
   <% end %>
   <% feed.posts.each do |post| %>
     <div class="ctctsmdpost">
-      <h3 class="ctctsmdposttitle"><%= post['story'] ||
+      <h3 class="ctctsmdposttitle"><%= html_format post['story'] ||
           "New Post #{Time.parse(post['created_time']).strftime '%b %e %Y'}" %>:</h3>
       <div class="ctctsmdposted">
         Posted: <%= Time.parse(post['created_time']).strftime "%r at %D" %>,
@@ -15,7 +15,7 @@
       </div>
       <% if post['message'] %>
         <div class="ctctsmdmsg">
-          <p><%= html_format post['message'] %></p>
+          <p><%= html_format(post['message'], true) %></p>
         </div>
       <% end %>
       <% if post['link'] %>
@@ -34,12 +34,12 @@
                 label="<%= post['link']['name'] %>"
                 href="<%= post['link']['url'] %>"/>
             <% if post['link']['description'] %>
-              <p><%= html_format post['link']['description'] %></p>
+              <p><%= html_format(post['link']['description'], true) %></p>
             <% end %>
           </div>
           <div class="ctctsmdcaption">
             <% if post['link']['caption'] %>
-              <p><%= html_format post['link']['caption'] %></p>
+              <p><%= html_format(post['link']['caption'], true) %></p>
             <% end %>
           </div>
         </div>

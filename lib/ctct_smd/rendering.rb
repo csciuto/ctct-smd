@@ -1,3 +1,4 @@
+require 'cgi'
 require 'ctct_smd/ctct_smd_config'
 
 module CTCT_SMD  
@@ -5,10 +6,13 @@ module CTCT_SMD
 
     require 'time'
 
-    def html_format(str)     
-      str = str.length > max_length ? str[0..max_length] + "...(truncated)" : str
+    def html_format(str, truncate=false)
+      str = CGI::escapeHTML(str)   
+      if truncate
+        str = str.length > max_length ? str[0..max_length] + "...(truncated)" : str
+      end
       str.gsub!("\n","<br />")
-      str  
+      str
     end
 
     def max_length

@@ -7,7 +7,7 @@ RSpec.describe CTCT_SMD::FacebookRenderer do
    context ".render" do    
     let(:posts) do
       [{
-        'story' => "Lowell Downtown Neighborhood Association (LDNA) shared City of Lowell Economic "\
+        'story' => "Lowell Downtown Neighborhood \n Association << (LDNA) shared City of Lowell Economic "\
             "Development Office's photo.",
         'message' => "The City of Lowell wants your input on future projects along the Pawtucket Canal "\
             "in the Hamilton Canal District.\n Share your vision on Wednesday Nov. 16 between 6:00 - 8:00 pm at the "\
@@ -42,6 +42,11 @@ RSpec.describe CTCT_SMD::FacebookRenderer do
     it 'formats dates' do
       result = CTCT_SMD::FacebookRenderer.render(feed)
       expect(result).to include "Last Updated: 01:55:31 PM at 11/04/16"
+    end
+
+    it 'escapes html' do
+      result = CTCT_SMD::FacebookRenderer.render(feed)
+      expect(result).to include "Lowell Downtown Neighborhood <br /> Association &lt;&lt; (LDNA) shared "
     end
   end
 
