@@ -18,8 +18,9 @@ RSpec.describe CTCT_SMD::ConstantContactClient do
         :body => "{\"email_content_format\":\"XHTML\",\"email_content\":\"<html>body ?here Al?s</html>\","\
             "\"from_email\":\"test@example.com\",\"from_name\":\"Test Sender\",\"name\":"\
             "\"Automated Campaign: #{Time.now.to_s}\",\"reply_to_email\":\"test@example.com\","\
-            "\"subject\":\"Social Media Digest\",\"text_content\":"\
-            "\"<text>Please view this email in an HTML-capable mail client</text>\","\
+            "\"subject\":\"Social Media Digest\","\
+            "\"sent_to_contact_lists\":[{\"id\":\"999\"}],"\
+            "\"text_content\":\"<text>Please view this email in an HTML-capable mail client</text>\","\
             "\"is_view_as_webpage_enabled\":true,\"view_as_web_page_link_text\":\"here\","\
             "\"view_as_web_page_text\":\"View this message as a web page\","\
             "\"is_permission_reminder_enabled\":true,\"permission_reminder_text\":"\

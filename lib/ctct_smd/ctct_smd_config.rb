@@ -22,7 +22,9 @@ module CTCT_SMD
         constantcontact_email_template: File.join(File.dirname(__FILE__),'email_template.erb'),
         constantcontact_style_sheet: File.join(File.dirname(__FILE__),'style_sheet.css'),
         constantcontact_img: "{constantcontact_img}",
-        constantcontact_message: "News Digest from Social Media"
+        constantcontact_message: "News Digest from Social Media",
+
+        constantcontact_list: "{constantcontact_list}" 
         
       }
     end

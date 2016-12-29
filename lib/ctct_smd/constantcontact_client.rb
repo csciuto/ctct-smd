@@ -16,12 +16,18 @@ module CTCT_SMD
       )
     end
 
+    def schedule(campaign_id)
+      post(
+        "emailmarketing/campaigns/#{campaign_id}/schedules"
+      )
+    end
+
   private
 
-    def post(relative_uri, request_body)
+    def post(relative_uri, request_body='{}')
 
       #Unfortunately, CTCT is not unicode...
-      request_body.encode!("US-ASCII", :undef => :replace, :invalid => :replace)      
+      request_body.encode!("US-ASCII", :undef => :replace, :invalid => :replace)
 
       uri = URI(V2_API_BASE + relative_uri)
       CTCT_SMD.logger.debug("POST #{uri}, #{request_body}")
@@ -44,6 +50,9 @@ module CTCT_SMD
         'name' => "Automated Campaign: #{Time.now.to_s}",
         'reply_to_email' =>  ctct_reply_email,
         'subject' => ctct_subject,
+        'sent_to_contact_lists' => [
+          { 'id': CTCT_SMD.config[:constantcontact_list] }
+        ],
         'text_content' => '<text>Please view this email in an HTML-capable mail client</text>',
         'is_view_as_webpage_enabled' => true,
         'view_as_web_page_link_text' => 'here',

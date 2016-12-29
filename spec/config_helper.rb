@@ -8,5 +8,6 @@ CTCT_SMD.config.merge!({
   constantcontact_from_email: 'test@example.com',
   constantcontact_from_name: 'Test Sender',
   constantcontact_subject: 'Social Media Digest',
+  constantcontact_list: '999',
   feed_formatted_msg_length: 25
 })

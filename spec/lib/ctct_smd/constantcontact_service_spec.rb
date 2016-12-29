@@ -40,16 +40,34 @@ RSpec.describe CTCT_SMD::ConstantContactService do
       ]
     end
 
-    it "successfully processes an ERB" do
-      client = instance_double("CTCT_SMD::ConstantContactClient")
-      expect(client).to receive(:create_campaign)
+    context "When send is true" do
+      it "schedules the campaign" do
+        client = instance_double("CTCT_SMD::ConstantContactClient")
+        expect(client).to receive(:create_campaign).and_return( {'id' => 1, 'name' => 'mocked campaign'} )
+        expect(client).to receive(:schedule).and_return( {'id' => 1, 'scheduled_date' => '2016-11-03T20:26:04+0000'} )
 
-      client_klass = class_double("CTCT_SMD::ConstantContactClient").as_stubbed_const(
-        :transfer_nested_constants => true)
-      expect(client_klass).to receive(:new).and_return(client)
+        client_klass = class_double("CTCT_SMD::ConstantContactClient").as_stubbed_const(
+          :transfer_nested_constants => true)
+        expect(client_klass).to receive(:new).and_return(client)
 
-      foo = CTCT_SMD::ConstantContactService.new.send_email(feeds)
-      puts foo
+        foo = CTCT_SMD::ConstantContactService.new.send_email(feeds, true)
+        puts foo
+      end      
+    end
+
+    context "When send is false" do
+      it "does not schedule the campaign" do
+        client = instance_double("CTCT_SMD::ConstantContactClient")
+        expect(client).to receive(:create_campaign).and_return( {'id' => 1, 'name' => 'mocked campaign'} )
+        expect(client).not_to receive(:schedule)
+
+        client_klass = class_double("CTCT_SMD::ConstantContactClient").as_stubbed_const(
+          :transfer_nested_constants => true)
+        expect(client_klass).to receive(:new).and_return(client)
+
+        foo = CTCT_SMD::ConstantContactService.new.send_email(feeds, false)
+        puts foo
+      end       
     end
 
   end
