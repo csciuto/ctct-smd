@@ -11,7 +11,7 @@ I haven't checked this into RubyGems yet, so pull down the source and run:
 ```
 bundle
 rake build
-gem install pkg/ctct_smd-0.1.1.gem
+gem install pkg/ctct_smd-0.2.1.gem
 ```
 
 Then, you should be able to just require the gem:
@@ -38,6 +38,8 @@ CTCT_SMD.config[:constantcontact_message] = "This message appears at the top of 
 
 CTCT_SMD.config[:constantcontact_img] = "An image you'd like to show at the top of your email"
 
+CTCT_SMD.config[:constantcontact_list] = "1832" # The id for the list you're sending to. You can retrieve this from the /lists endpoint on the Constant Contact API
+
 CTCT_SMD.config[:facebook_page_limit] = 5 # How many posts from each page to put in the email
 
 CTCT_SMD.logger.level = Logger::DEBUG
@@ -50,17 +52,22 @@ feeds = [
 ]
 
 constantcontact_service = CTCT_SMD::ConstantContactService.new
-resp = constantcontact_service.send_email(feeds)
+constantcontact_service.send_email(feeds, false)
 
 ```
 
 This creates a Custom Code email but doesn't actually send it.
 
+To send it, the last line would be:
+
+```
+constantcontact_service.send_email(feeds, true)
+```
+
 ## TODO
 
 * There's code in the Facebook client that'll retrieve data from a Facebook Group instead of a Page. However, it's probably not complete and definitely untested. Keep in mind that Facebook's TOS requires you respect user privileges so if you want to try groups, make sure you're using an unauthenticated Facebook access token and are accessing Public groups.
 * Perhaps other social media feeds other than Facebook could be added as well?
-* Could enhance the Constant Contact Client / Service to actually schedule the email. Right now, it's manual but there is a scheduling API.
 
 ## Development
 
