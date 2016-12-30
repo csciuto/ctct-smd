@@ -1,44 +1,42 @@
-require 'net/http'
-require 'json'
-require 'ctct_smd/ctct_smd_logger'
 require 'ctct_smd/ctct_smd_config'
+require 'ctct_smd/base_json_http_client'
+require 'json'
 
 module CTCT_SMD
-  class ConstantContactClient
+  class ConstantContactClient < BaseJsonHttpClient
 
     V2_API_BASE = 'https://api.constantcontact.com/v2/'
 
     def create_campaign(html_body, style_sheet)
       request_body = generate_request_body(html_body, style_sheet)
+      
+      #Unfortunately, CTCT is not unicode...
+      request_body.encode!("US-ASCII", :undef => :replace, :invalid => :replace)
+      
       post(
-        "emailmarketing/campaigns",
+        build_uri("emailmarketing/campaigns"),
         request_body
       )
     end
 
     def schedule(campaign_id)
       post(
-        "emailmarketing/campaigns/#{campaign_id}/schedules"
+        build_uri("emailmarketing/campaigns/#{campaign_id}/schedules")
       )
     end
 
-  private
+    def get_lists
+      get(
+        build_uri("lists")
+      )
+    end
 
-    def post(relative_uri, request_body='{}')
+    private
 
-      #Unfortunately, CTCT is not unicode...
-      request_body.encode!("US-ASCII", :undef => :replace, :invalid => :replace)
-
-      uri = URI(V2_API_BASE + relative_uri)
-      CTCT_SMD.logger.debug("POST #{uri}, #{request_body}")
+    def build_uri(relative_path)
+      uri = URI("#{V2_API_BASE}#{relative_path}")
       uri.query = URI.encode_www_form(ctct_key.merge(ctct_token))
-      response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
-        req = Net::HTTP::Post.new(uri)
-        req['Content-Type'] = 'application/json'
-        http.request(req, request_body)
-      end
-      CTCT_SMD.logger.debug("#{response.code}\n#{response.body}")
-      JSON.parse(response.body)
+      uri
     end
 
     def generate_request_body(html_body, style_sheet)

@@ -17,7 +17,11 @@ module CTCT_SMD
       end
     end
 
-  private
+    def get_lists
+      client.get_lists
+    end
+
+    private
 
     def client
       @client ||= ConstantContactClient.new

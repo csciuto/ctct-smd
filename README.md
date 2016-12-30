@@ -11,7 +11,7 @@ I haven't checked this into RubyGems yet, so pull down the source and run:
 ```
 bundle
 rake build
-gem install pkg/ctct_smd-0.2.1.gem
+gem install pkg/ctct_smd-0.3.0.gem
 ```
 
 Then, you should be able to just require the gem:
@@ -38,7 +38,7 @@ CTCT_SMD.config[:constantcontact_message] = "This message appears at the top of 
 
 CTCT_SMD.config[:constantcontact_img] = "An image you'd like to show at the top of your email"
 
-CTCT_SMD.config[:constantcontact_list] = "1832" # The id for the list you're sending to. You can retrieve this from the /lists endpoint on the Constant Contact API
+CTCT_SMD.config[:constantcontact_list] = "1832" # The id for the list you're sending to. You can retrieve this from the get_lists method on the ConstantContactService object
 
 CTCT_SMD.config[:facebook_page_limit] = 5 # How many posts from each page to put in the email
 
